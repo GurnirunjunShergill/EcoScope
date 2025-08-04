@@ -25,7 +25,7 @@
 
 ### Scraping
 
-* [Cheerio](https://cheerio.js.org/), [Playwright](https://playwright.dev/) or [Puppeteer](https://pptr.dev/)
+* [Playwright](https://playwright.dev/)
 * NOAA, EPA, OpenAQ, NREL APIs
 * Store raw + processed data in database
 
