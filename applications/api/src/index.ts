@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import {prisma} from 'prisma-database';
 import exampleRoutes from "./routes/example";
 
 const app = Fastify({ logger: true });
@@ -7,6 +8,11 @@ const app = Fastify({ logger: true });
 
 app.get("/ping", async (request, reply) => {
   return { pong: true };
+});
+
+app.get('/readings', async (request, reply) => {
+  const readings = await prisma.climateReading.findMany();
+  return readings;
 });
 
 const start = async () => {
