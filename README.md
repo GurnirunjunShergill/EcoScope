@@ -25,7 +25,7 @@ This project is designed to:
 ### Backend
 
 * Node.js + TypeScript
-* [Fastify](https://www.fastify.io/) (or Express)
+* [Fastify](https://www.fastify.io/)
 * [Prisma](https://www.prisma.io/) + PostgreSQL (with PostGIS)
 * [node-cron](https://www.npmjs.com/package/node-cron) for scheduled jobs
 * Redis for caching (optional)
