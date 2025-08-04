@@ -1,13 +1,12 @@
 # 🌍 EcoScope: Climate & Sustainability Intelligence Platform
 
-**EcoScope** is a full-stack, data-driven web app designed to provide local climate and sustainability insights to users. Built for performance, accessibility, and modern web best practices, EcoScope integrates public climate data sources through a scraping engine and API backend, delivering meaningful insights through a beautiful frontend.
+**EcoScope** is a full-stack, data-driven web app designed to provide local climate and sustainability insights to users. Built for performance, accessibility, and modern web best practices, EcoScope integrates public climate data sources through official APIs (NOAA, EPA, NASA, etc.), delivering meaningful insights through a beautiful frontend.
 
 This project is designed to:
 
-* Impress high-paying employers in climate-tech and related industries
-* Be legally safe by using open public data
-* Be a launchable, monetizable product
-* Build deep backend and frontend development skills
+* Provide transparent, localized climate and sustainability insights
+* Integrate trusted public APIs to create a meaningful and educational dashboard
+* Explore real-time environmental data through an interactive and accessible frontend
 
 ---
 
@@ -17,7 +16,7 @@ This project is designed to:
 
 * [Next.js 14](https://nextjs.org/docs) (App Router)
 * [Tailwind CSS](https://tailwindcss.com/)
-* [shadcn/ui](https://ui.shadcn.com/)
+* [shadcn/ui](https://ui.shadcn.com/) *(optional)*
 * [Recharts](https://recharts.org/en-US) for graphs
 * [Leaflet](https://leafletjs.com/) or Mapbox for maps
 * Lighthouse/a11y optimization
@@ -30,15 +29,9 @@ This project is designed to:
 * [node-cron](https://www.npmjs.com/package/node-cron) for scheduled jobs
 * Redis for caching (optional)
 
-### Scraping
-
-* [Cheerio](https://cheerio.js.org/), [Playwright](https://playwright.dev/) or [Puppeteer](https://pptr.dev/)
-* NOAA, EPA, OpenAQ, NREL APIs
-* Store raw + processed data in database
-
 ### Infrastructure
 
-* Monorepo setup (e.g., Turborepo or npm workspaces)
+* Monorepo setup (npm workspaces or Turborepo)
 * Deployment: Vercel (frontend), Railway or Fly.io (backend), Supabase or Neon (DB)
 * GitHub Actions CI/CD
 
@@ -49,13 +42,10 @@ This project is designed to:
 ```
 ecoscope/
 ├── apps/
+├── packages/
 │   ├── web/               → Next.js frontend
 │   ├── api/               → Fastify API backend
-│
-├── packages/
-│   ├── scraper/           → Scraper logic (Node.js)
 │   ├── db/                → Prisma schema + utils
-│
 ├── .github/               → CI/CD workflows
 ├── docker/                → Docker configs
 ├── .env.example
@@ -69,24 +59,24 @@ ecoscope/
 ### Week 1: Planning & Setup
 
 * Identify 2–3 public data sources
+
+  * [EPA Air Quality System](https://www.epa.gov/outdoor-air-quality-data)
+  * [NASA CO₂ Tracker](https://climate.nasa.gov/vital-signs/carbon-dioxide/)
 * Set up monorepo with workspaces
-* Scaffold frontend, backend, scraper, and db
+* Scaffold frontend, backend, and database
 * Define initial DB schema (locations, AQI, solar, etc.)
 * Pick brand direction, fonts, and color palette
-
-### Week 2: Scraper MVP
-
-* Build scraper for OpenAQ & NREL APIs
-* Store fetched data into PostgreSQL
-* Schedule re-fetch using cron
 
 ### Week 3: Backend API
 
 * Build Fastify API with routes:
 
-  * `GET /climate?zip=90210`
-  * `GET /solar?lat=34.1&lng=-118.3`
-  * `GET /trends/temperature?city=Detroit`
+  * `GET /climate?zip=90210` → Combines EPA air quality and temperature data
+  * `GET /solar?lat=34.1&lng=-118.3` → Uses [NREL Solar Resource API](https://developer.nrel.gov/docs/solar/solar-resource/v1/)
+  * `GET /trends/temperature?city=Detroit` → NOAA/NASA global climate dataset
+  * `GET /ev-stations?state=CA` → National Renewable Energy Lab (NREL) alt fuel station API
+  * `GET /incentives?state=MI` → DSIRE (Database of State Incentives for Renewables & Efficiency)
+
 * Add validation, logging, and basic caching
 
 ### Week 4: Frontend MVP
@@ -99,7 +89,7 @@ ecoscope/
 
 * Add maps (EV stations, solar potential)
 * Add historic trend graphs
-* Add incentives data (static first, then scraped)
+* Add incentives data (static at first, then API-based)
 
 ### Week 6: Infra & Performance
 
@@ -173,32 +163,12 @@ ecoscope/
 
 ---
 
-## 💼 Employers You’ll Impress
-
-* Palantir, Northrop Grumman, Lockheed, SpaceX, Booz Allen
-* Climate-focused startups
-* Data-centric SaaS companies
-* Full-stack JavaScript/TypeScript teams
-
----
-
 ## ✨ Stretch Goals
 
 * AI-powered summaries of local climate health
 * PWA/mobile offline support
 * Compare two cities side-by-side
 * Gamify “eco score” tracking per area
-
----
-
-## 🙌 Contributing / Goals
-
-This project is designed to:
-
-* Build deep backend skills (scraping, APIs, PostgreSQL)
-* Learn modern frontend architecture (Next.js App Router)
-* Showcase a portfolio-worthy full-stack application
-* Launch a product you could potentially monetize
 
 ---
 
