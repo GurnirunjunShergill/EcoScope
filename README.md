@@ -2,13 +2,6 @@
 
 **EcoScope** is a full-stack, data-driven web app designed to provide local climate and sustainability insights to users. Built for performance, accessibility, and modern web best practices, EcoScope integrates public climate data sources through a scraping engine and API backend, delivering meaningful insights through a beautiful frontend.
 
-This project is designed to:
-
-* Impress high-paying employers in climate-tech and related industries
-* Be legally safe by using open public data
-* Be a launchable, monetizable product
-* Build deep backend and frontend development skills
-
 ---
 
 ## 🚀 Tech Stack
