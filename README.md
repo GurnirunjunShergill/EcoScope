@@ -58,10 +58,6 @@ ecoscope/
 
 ### Week 1: Planning & Setup
 
-* Identify 2–3 public data sources
-
-  * [EPA Air Quality System](https://www.epa.gov/outdoor-air-quality-data)
-  * [NASA CO₂ Tracker](https://climate.nasa.gov/vital-signs/carbon-dioxide/)
 * Set up monorepo with workspaces
 * Scaffold frontend, backend, and database
 * Define initial DB schema (locations, AQI, solar, etc.)
