@@ -63,6 +63,18 @@ ecoscope/
 * Define initial DB schema (locations, AQI, solar, etc.)
 * Pick brand direction, fonts, and color palette
 
+### Week 2: Data & DB Setup
+
+* Set up PostgreSQL (local or cloud) and connect Prisma in packages/db
+* Add initial Prisma schema (Location, Measurement, MeasurementType)
+* Run migrations (npx prisma migrate dev --name init) and generate Prisma Client
+* Create .env.example entries for required API keys and endpoints (NOAA, EPA/AirNow, NREL, DSIRE)
+* Implement small data-fetcher modules that call NOAA/EPA/NREL and validate responses
+* Add a DB seed script to populate a few test locations and measurements
+* Design a basic caching strategy (Redis placeholder) to avoid hitting rate limits
+* Add linting, formatting, and pre-commit hooks (ESLint, Prettier, Husky)
+* Add dev scripts to run the API and local DB together (pnpm dev)
+
 ### Week 3: Backend API
 
 * Build Fastify API with routes:
