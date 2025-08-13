@@ -2,5 +2,11 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "run-backend": "concurrently \"pnpm --filter api dev\" \"pnpm --filter db dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
 }

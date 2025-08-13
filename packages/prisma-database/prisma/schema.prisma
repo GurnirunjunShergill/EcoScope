@@ -4,18 +4,44 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model Location {
+  id          String     @id @default(cuid())
+  name        String?    // city or location name
+  zip         String?    @unique
+  latitude    Float
+  longitude   Float
+  measurements Measurement[]
+  createdAt   DateTime   @default(now())
 }
 
-model ClimateReading {
-  id          Int      @id @default(autoincrement())
-  city        String
-  temperature Float
-  createdAt   DateTime @default(now())
+model Measurement {
+  id          String     @id @default(cuid())
+  location    Location   @relation(fields: [locationId], references: [id])
+  locationId  String
+  type        MeasurementType
+  value       Float
+  unit        String
+  source      String
+  recordedAt  DateTime
+  createdAt   DateTime   @default(now())
+
+  @@index([locationId, type, recordedAt])
+}
+
+enum MeasurementType {
+  AQI
+  TEMPERATURE
+  CO2
+  SOLAR_POTENTIAL
+  PM25
+  HUMIDITY
 }
